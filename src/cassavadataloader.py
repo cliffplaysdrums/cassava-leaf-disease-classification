@@ -4,7 +4,6 @@ import torch
 from PIL import Image
 import os
 import pandas as pd
-from sklearn.model_selection import train_test_split
 
 
 # We need a custom class for batching to provide the dataloader info on how to batch our data & pin memory
@@ -54,15 +53,6 @@ class CassavaDataset(Dataset):
         label = self.labels_df['label'][idx]
 
         return img, label
-
-
-def get_train_validate_split(dataset, val_portion=.2):
-    train_indices, validation_indices = train_test_split(list(range(len(dataset))), test_size=val_portion)
-
-    train_dataset = Subset(dataset, train_indices)
-    validation_dataset = Subset(dataset, validation_indices)
-
-    return train_dataset, validation_dataset
 
 
 
