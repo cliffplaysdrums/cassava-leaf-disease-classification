@@ -90,7 +90,7 @@ def train_model(device, train_dataloader, validation_dataloader, train_eval_subs
             validation_scores.append(evaluate_model(model, validation_dataloader, device))
             images_processed.append(completed)
 
-            with open(os.path.join(model_output_directory, f'train-validation-scores.pckl', 'wb')) as outfile:
+            with open(os.path.join(model_output_directory, f'train-validation-scores.pckl'), 'wb') as outfile:
                 pickle.dump({'train_scores': train_scores,
                              'validation_scores': validation_scores,
                              'images_processed': images_processed},
